@@ -3,11 +3,13 @@ package com.zaggle.zig.core.entity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Proxy;
+import org.hibernate.annotations.Type;
 
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -18,7 +20,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "api", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "domain", "uri"})})
 @Proxy(lazy = false)
-@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
+//@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class Api {
 
     //    @SequenceGenerator(name = "api_seq", sequenceName = "api_seq", allocationSize = 1)
@@ -33,7 +35,7 @@ public class Api {
     private String domain;
     private String uri;
     private String method;
-    @Type(type = "jsonb")
+    @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private JsonNode headers;
 
