@@ -34,10 +34,10 @@ public class App {
     @JsonIgnoreProperties("app")
     @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<ClientApp> clientApps = new HashSet<>();
-//
-//    @JsonIgnoreProperties("app")
-//    @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//    private Set<AppApi> appApis = new HashSet<>();
+
+    @JsonIgnoreProperties("app")
+    @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<AppApi> appApis = new HashSet<>();
 
 //    @JsonIgnoreProperties("app")
 //    @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)

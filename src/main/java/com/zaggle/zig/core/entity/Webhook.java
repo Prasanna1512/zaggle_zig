@@ -1,30 +1,27 @@
 package com.zaggle.zig.core.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.JsonNode;
-
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.Type;
-
-
 import java.sql.Timestamp;
 import java.util.UUID;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Getter
-@Setter
-@Builder
-@Table(name = "api", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "domain", "uri"})})
+@Table(name="webhook", uniqueConstraints = { @UniqueConstraint(columnNames = { "name", "domain", "uri" }) })
 @Proxy(lazy = false)
-//@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-public class Api {
+//@TypeDef(name="jsonb", typeClass = JsonBinaryType.class)
+public class Webhook {
 
-    //    @SequenceGenerator(name = "api_seq", sequenceName = "api_seq", allocationSize = 1)
     @Id
     private UUID id;
     private String name;
@@ -39,9 +36,8 @@ public class Api {
     @Type(JsonType.class)
     @Column(columnDefinition = "jsonb")
     private JsonNode headers;
-
-//    @JsonIgnoreProperties("api")
-//    @OneToOne( mappedBy = "api", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//    private AppApi appApi;
+    @JsonIgnoreProperties("webhook")
+    @OneToOne( mappedBy = "webhook", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private AppWebhook appWebhook;
 
 }
