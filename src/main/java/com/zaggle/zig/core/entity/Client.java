@@ -9,6 +9,7 @@ import org.hibernate.annotations.Proxy;
 
 import java.sql.Timestamp;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -19,9 +20,8 @@ import java.util.stream.Stream;
 @Proxy(lazy = false)
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(name = "name", unique = true)
     private String name;
     @Column(columnDefinition = "integer default 1")

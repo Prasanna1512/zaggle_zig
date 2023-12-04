@@ -2,14 +2,11 @@ package com.zaggle.zig.core.entity;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
-
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Proxy;
 import org.hibernate.annotations.Type;
-
-
 import java.sql.Timestamp;
 import java.util.UUID;
 

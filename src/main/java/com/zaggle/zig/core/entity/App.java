@@ -11,6 +11,7 @@ import org.hibernate.annotations.Proxy;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 
 @Data
@@ -20,8 +21,8 @@ import java.util.Set;
 @Proxy(lazy = false)
 public class App {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(unique = true)
     private String name;
     @Column(columnDefinition = "integer default 1")
@@ -39,7 +40,7 @@ public class App {
     @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<AppApi> appApis = new HashSet<>();
 
-//    @JsonIgnoreProperties("app")
-//    @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-//    private Set<AppWebhook> appWebhooks = new HashSet<>();
+    @JsonIgnoreProperties("app")
+    @OneToMany(mappedBy = "app", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<AppWebhook> appWebhooks = new HashSet<>();
 }

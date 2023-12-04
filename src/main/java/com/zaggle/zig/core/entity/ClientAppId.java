@@ -1,5 +1,4 @@
 package com.zaggle.zig.core.entity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -8,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Embeddable
 public class ClientAppId implements Serializable {
     @Column(name = "client_id")
-    private Long clientId;
+    private UUID clientId;
     @Column(name = "app_id")
-    private Long appId;
+    private UUID appId;
 }

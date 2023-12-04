@@ -19,5 +19,5 @@ public class AppWebhookId implements Serializable {
     @Column(name="webhook_id")
     private UUID webhookId;
     @Column(name="app_id")
-    private Long appId;
+    private UUID appId;
 }

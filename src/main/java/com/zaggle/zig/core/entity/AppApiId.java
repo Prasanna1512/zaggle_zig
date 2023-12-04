@@ -20,5 +20,5 @@ public class AppApiId implements Serializable {
     @Column(name = "api_id")
     private UUID apiId;
     @Column(name = "app_id")
-    private Long appId;
+    private UUID appId;
 }
